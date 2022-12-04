@@ -44,13 +44,16 @@
   <div>
     <%= form.label :author_id, style: "display: block" %>
     <!--  <%= form.text_field :author_id %> -->
+    <!-- use collection_select to perform dropdown select function-->
     <%= form.collection_select :cauthor_id, Author.all, :id, :name, prompt: false %>  
   </div>
 
   <div>
     <%= form.label :category_id, style: "display: block" %>
     <!-- <%= form.text_field :category_id %>  -->
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    
+    <!-- use collection_select to perform dropdown select function-->
+    <%= form.collection_select :category_id, Category.all, :id, :name %> 
   </div>
 
   <div>
