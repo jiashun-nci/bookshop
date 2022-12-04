@@ -20,19 +20,25 @@ class ReviewsController < ApplicationController
   end
 
   # POST /reviews or /reviews.json
-  def create
-    @review = Review.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#  def create
+#    @review = Review.new(review_params)
+#
+#    respond_to do |format|
+#      if @review.save
+#        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
+#        format.json { render :show, status: :created, location: @review }
+#      else
+#        format.html { render :new, status: :unprocessable_entity }
+#        format.json { render json: @review.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
+   # customized create method
+   def create
+   	@book = Book.find(params[:book_id])
+   	@review = @book.reviews.create(review_params)
+   	redirect_to book_path(@book)
+   end
 
   # PATCH/PUT /reviews/1 or /reviews/1.json
   def update
@@ -65,6 +71,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:who, :message, :book_id)
+      params.require(:review).permit(:who, :message)
     end
 end
