@@ -30,6 +30,9 @@ gem "jbuilder"
 # Add devise authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+# Add Bootstrap 4 for style and layout
+gem 'bootstrap', '~> 4.6', '>= 4.6.2'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

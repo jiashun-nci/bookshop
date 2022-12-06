@@ -1,10 +1,29 @@
-<h1>Editing author</h1>
+<!-- Header-->
+<header class="bg-info py-1">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Editing Authors</h1>
+          <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>
+      </div>
+          <div class="text-center text-white pt-3">
+		  <%= link_to "Show this author", @autho, class: "btn btn-outline-warning" %>
+		  <%= link_to "Back to authors", authors_path, class: "btn btn-outline-warning" %>
+		</div>      
+      
+  </div>
+</header>
 
-<%= render "form", author: @author %>
-
-<br>
-
-<div>
-  <%= link_to "Show this author", @author %> |
-  <%= link_to "Back to authors", authors_path %>
+<div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-12">
+        <%= render "form", author: @author %>
+        
+        </div>
+    </div>
 </div>
+
+<div class="row">
+   <div class="col-md-12" style="height:250px;"></div>
+</div>
+
+

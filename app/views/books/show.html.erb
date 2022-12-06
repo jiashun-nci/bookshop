@@ -1,46 +1,64 @@
+<!-- Header-->
+<header class="bg-info py-1">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Book Information</h1>
+          <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>
+
+		<div class="py-3">
+		  <%= link_to "Edit this book", edit_book_path(@book), class: "btn btn-outline-warning" %>
+		  <%= link_to "Back to books", books_path, class: "btn btn-outline-warning" %>
+		
+		  <%= button_to "Destroy this book", @book, method: :delete, class: "btn btn-outline-danger mt-2" %>
+		</div>
+          
+      </div>
+      
+  </div>
+</header>
 <p style="color: green"><%= notice %></p>
 
 <%= render @book %>
 
-  <!-- List reviews belong to this book -->
-  <h2>Reviews</h2>
-	<% @book.reviews.each do |review| %>
-  <p>
-    <strong>Who:</strong>
-    <%= review.who %>
-  </p>
- 
-  <p>
-    <strong>Message:</strong>
-    <%= review.message %>
-  </p>
-<% end %>
 
 
-
-
-  <!-- Add reviews from users-->
-  
-  <div>
-    <h2>Add a Review:</h2>
-    <%= form_for([@book, @book.reviews.build]) do |f| %>
-  <p>
-    <%= f.label :who %><br>
-    <%= f.text_field :who %>
-  </p>
-  <p>
-    <%= f.label :message %><br>
-    <%= f.text_area :message %>
-  </p>
-  <p> <%= f.submit %> </p> 
-    <% end %>
-  </div>
-
-
-
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-
-  <%= button_to "Destroy this book", @book, method: :delete %>
+<div class="container px-4 px-lg-5">
+	 <div class="row gx-4 gx-lg-5 align-items-center">
+	 <h4 class="display-6 mx-auto">Reviews</h4>
+		<section class="mb-5 col-md-12">
+		         <div class="card bg-light">
+		             <div class="card-body">
+		               <!-- Add reviews from users-->
+					  <div>
+					    <%= form_for([@book, @book.reviews.build]) do |f| %>
+					  <p>
+					    <!-- <%= f.label :who, { class: "form-label"} %><br> -->
+					    <%= f.text_field :who, { class: "form-control", placeholder: "Your Name..." } %>
+					  </p>
+					  <p>
+					    <!--  <%= f.label :message %><br> -->
+					    <%= f.text_area :message, { class: "form-control", placeholder: "Write your review..." }  %>
+					  </p>
+					  <p><%= f.submit "Submit Review", class: "btn btn-primary btn-lg btn-block" %> </p> <br>
+					    <% end %>
+					  </div>
+					<hr/>
+		                 <!-- Single comment-->
+		                 <% @book.reviews.each do |review| %>
+		                 <div class="d-flex">
+		                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+		                     <div class="ms-3">
+		                         <div class="fw-bold ml-2"><%= review.who %>:</div>
+		                         <div class="fw-bold ml-2"><%= review.message %></div>
+		                         <br/>
+		                         
+		                     </div>
+		                 </div>
+		                 <% end %>
+		             </div>
+		         </div>
+		 </section>
+	 </div>
+	
+	 </div>
 </div>

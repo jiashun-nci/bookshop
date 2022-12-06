@@ -11,42 +11,44 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-12">
+<div>
     <%= form.label :isbn, style: "display: block" %>
-    <%= form.text_field :isbn %>
+    <%= form.text_field :isbn, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :desc, style: "display: block" %>
-    <%= form.text_area :desc %>
+    <%= form.text_area :desc, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :page_number, style: "display: block" %>
-    <%= form.number_field :page_number %>
+    <%= form.number_field :page_number, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :release_year, style: "display: block" %>
-    <%= form.date_field :release_year %>
+    <%= form.date_field :release_year, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :image_url, style: "display: block" %>
-    <%= form.text_field :image_url %>
+    <%= form.text_field :image_url, { class: "form-control" } %>
   </div>
 
   <div>
     <%= form.label :author_id, style: "display: block" %>
-    <!--  <%= form.text_field :author_id %> -->
-    <!-- use collection_select to perform dropdown select function-->
-    <%= form.collection_select :cauthor_id, Author.all, :id, :name, prompt: false %>  
-  </div>
+    <!-- <%= form.text_field :author_id %> -->
+    <!-- use collection_select to choose author -->
+    <%= form.collection_select :author_id, Author.all, :id, :name %> 
 
   <div>
     <%= form.label :category_id, style: "display: block" %>
@@ -56,7 +58,13 @@
     <%= form.collection_select :category_id, Category.all, :id, :name %> 
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
+        
+   </div>
+        
+    </div>
+</div>
+
 <% end %>
