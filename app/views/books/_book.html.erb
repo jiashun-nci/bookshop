@@ -1,47 +1,30 @@
+<!-- Product section-->
 <div id="<%= dom_id book %>">
-  <p>
-    <strong>Isbn:</strong>
-    <%= book.isbn %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
-
-  <p>
-    <strong>Desc:</strong>
-    <%= book.desc %>
-  </p>
-
-  <p>
-    <strong>Page number:</strong>
-    <%= book.page_number %>
-  </p>
-
-  <p>
-    <strong>Release year:</strong>
-    <%= book.release_year %>
-  </p>
-
-  <p>
-    <strong>Image url:</strong>
-    <%= book.image_url %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= book.author_id %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= book.category_id %>
-  </p>
-
-
-
-
-  
-
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src=<%= book.image_url %> alt=<%= book.title %> /></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">SKU: <%= book.isbn %></div>
+                        
+                        <h1 class="display-5 fw-bolder"><%= book.title %></h1>
+                        <div class="small mb-1">Author: <%= book.author_id %></div>
+                        <div class="small mb-1">Year: <%= book.release_year %></div>
+                        <div class="small mb-1">Page Number: <%= book.page_number %></div>
+                        <div class="small mb-1">Category: <%= book.category_id %></div>
+                        <div class="fs-2 fw-bold mb-5">
+                            <span class="text-decoration-line-through">$45.00</span>
+                        </div>
+                        <p class="lead"><%= book.desc %></p>
+                        <div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            <button class="btn btn-outline-info ml-1" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </div>

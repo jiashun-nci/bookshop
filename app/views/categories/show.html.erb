@@ -1,10 +1,35 @@
+<!-- Header-->
+<header class="bg-info py-1">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Category Information</h1>
+          <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>
+
+		<div class="py-3">
+		  <%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-outline-warning" %>
+		  <%= link_to "Back to categories", categories_path, class: "btn btn-outline-warning" %>
+		
+		  <%= button_to "Destroy this category", @category, method: :delete, class: "btn btn-outline-danger mt-2" %>
+		</div>
+          
+      </div>
+      
+  </div>
+</header>
 <p style="color: green"><%= notice %></p>
 
-<%= render @category %>
+<div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-12">
+        
+		<%= render @category %>
+        
+        </div>
+    </div>
+</div>
 
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
+
+<div class="row">
+   <div class="col-md-12" style="height:350px;"></div>
 </div>
