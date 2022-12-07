@@ -1,9 +1,11 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :only => [:index, :show]
 
   # GET /authors or /authors.json
   def index
-    @authors = Author.all
+    ##@authors = Author.all
+    @authors = Author.where(["lower(name) LIKE ?","%#{params[:search.downcase]}%"])
   end
 
   # GET /authors/1 or /authors/1.json

@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :except => [:index, :show]
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    # @categories = Category.all
+    @categories = Category.where(["lower(name) LIKE ?","%#{params[:search.downcase]}%"])
   end
 
   # GET /categories/1 or /categories/1.json
