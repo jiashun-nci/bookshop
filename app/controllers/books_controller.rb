@@ -4,7 +4,8 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    # @books = Book.all
+    @books = Book.where(["lower(title) LIKE ?","%#{params[:search.downcase]}%"])
   end
 
   # GET /books/1 or /books/1.json
