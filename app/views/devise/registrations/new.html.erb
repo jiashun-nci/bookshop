@@ -1,31 +1,42 @@
-<div class="row">
+<!-- Header-->
+<header class="bg-info py-1">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Sign Up</h1>
+          <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>
+      </div>
+      
+  </div>
+</header>
+
+
+<div class="row py-5">
 <div class="col-md-3"></div>
    <div class="col-md-6" style="height:800px;">
-   <h2>Sign up</h2>
 
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	<%= render "devise/shared/error_messages", resource: resource %>
 	
-	<div class="field">
+	<div class="field form-group">
 	<%= f.label :email %><br />
-	<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+	<%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
 	</div>
 	
-	<div class="field">
+	<div class="field form-group">
 	<%= f.label :password %>
 	<% if @minimum_password_length %>
 	<em>(<%= @minimum_password_length %> characters minimum)</em>
 	<% end %><br />
-	<%= f.password_field :password, autocomplete: "new-password" %>
+	<%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
 	</div>
 	
-	<div class="field">
+	<div class="field form-group">
 	<%= f.label :password_confirmation %><br />
-	<%= f.password_field :password_confirmation,  autocomplete: "new-password" %>
+	<%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
 	</div>
 	
 	<div class="actions">
-	<%= f.submit "Sign up" %>
+	<%= f.submit "Sign up", class:"btn btn-info" %>
 	</div>
 	<% end %>
 	
