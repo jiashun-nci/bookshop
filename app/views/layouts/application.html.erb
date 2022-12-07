@@ -22,9 +22,9 @@
                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                    <li class="nav-item"><a class="nav-link" href="/authors">Authors</a></li>
                    <li class="nav-item"><a class="nav-link" href="/categories">Categories</a></li>
-                   <li class="nav-item "><a class="nav-link" href="#"></a></li>
+                   
                    <li class="nav-item pr-5">
-                       <form class="form-inline my-2 my-lg-0">
+                       <form class="form-inline">
 				      
 				      <%= form_tag books_path, :method => 'get' do  %>
 						<%= text_field_tag :search, params[:search], class:"form-control mr-sm-2"  %>
@@ -33,10 +33,7 @@
 				      
     				   </form>
                    </li>
-                   <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                   <li class="nav-item "><a class="nav-link" href="#"></a></li>
-                   <li class="nav-item "><a class="nav-link" href="#"></a></li>
-                   <li class="nav-item "><a class="nav-link" href="#"></a></li>
+                   <li class="nav-item mr-2"><%= link_to "More...", new_search_path, class:"btn btn-outline-info" %></li>
                    <li class="nav-item">
 
 	                   <button class="btn btn-outline-success right" type="submit">
