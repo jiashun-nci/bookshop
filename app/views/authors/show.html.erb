@@ -1,10 +1,10 @@
-<!-- Header-->
+<!-- Head banner-->
 <header class="bg-info py-1">
   <div class="container px-4 px-lg-5 my-5">
       <div class="text-center text-white">
           <h1 class="display-4 fw-bolder">Author Information</h1>
           <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>
-
+          <!-- Function buttons: Edit, Back, Delete -->
 		<div class="py-3">
 		  <%= link_to "Edit this author", edit_author_path(@author), class: "btn btn-outline-warning" %>
 		  <%= link_to "Back to authors", authors_path, class: "btn btn-outline-warning" %>
@@ -17,16 +17,16 @@
   </div>
 </header>
 <p style="color: green"><%= notice %></p>
+
+<!-- Render author-->
 <div class="container px-4 px-lg-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-12">
-
-<%= render @author %>
-
+		<%= render @author %>
         </div>
     </div>
 </div>
-
+<!-- empty row  -->
 <div class="row">
    <div class="col-md-12" style="height:350px;"></div>
 </div>

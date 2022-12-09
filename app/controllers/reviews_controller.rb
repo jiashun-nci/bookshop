@@ -1,3 +1,9 @@
+# review controller
+# 
+# define CRUD methods: show edit update destroy
+# 
+# @author jia    
+#
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
 
@@ -19,21 +25,7 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  # POST /reviews or /reviews.json
-#  def create
-#    @review = Review.new(review_params)
-#
-#    respond_to do |format|
-#      if @review.save
-#        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
-#        format.json { render :show, status: :created, location: @review }
-#      else
-#        format.html { render :new, status: :unprocessable_entity }
-#        format.json { render json: @review.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
-   # customized create method
+   # create review under book model
    def create
    	@book = Book.find(params[:book_id])
    	@review = @book.reviews.create(review_params)

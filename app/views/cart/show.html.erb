@@ -1,0 +1,118 @@
+<!-- Header Banner-->
+<header class="bg-info py-1">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Your Cart</h1>
+          <p class="lead fw-normal text-white-50 mb-0">Your Online Bookshop</p>         
+      </div>
+  </div>
+</header>
+
+<div class="card col-8 mx-auto mb-2 my-5" >
+<table class="table align-middle bg-white table-hover">
+  <thead class="bg-light">
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Status</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @cart.orderables.each do |orderable| %>
+	<% book = orderable.book %>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="<%= book.image_url %>"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1"><%= book.title %></p>
+      </td>
+       <td>
+        <p class="fw-normal mb-1"><%= book.price %></p>
+      </td>
+       <td>
+        <p class="fw-normal mb-1"><%= orderable.quantity %></p>
+      </td>
+       <td>
+        <p class="fw-normal mb-1">$<%= book.price * orderable.quantity %></p>
+      </td>
+      <td>
+        <span class="badge badge-success rounded-pill d-inline">Stock</span>
+      </td>
+      <td>
+
+          <%= link_to "View", book, class:"btn btn-outline-info" %>
+
+      </td>
+    </tr>
+    	<% end %>
+    	<tr>
+    	<td colspan="5"></td>
+	<td colspan="2" class="text-info font-weight-bold pt-3 pb-0">Your total is <span class="h5">$<%= @cart.total %></span></td>
+	</tr>
+  </tbody>
+</table>
+
+</div>
+
+<div class="card col-8 mx-auto mb-5 py-3 " >
+<p class="h4 mb-3">Shipping Address:</p>
+<form>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">First name</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">Last name</label>
+      <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Lee" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">Phone Number</label>
+      <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="+353" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-6">
+      <label for="validationDefault03">Address</label>
+      <input type="text" class="form-control" id="validationDefault03" placeholder="Address" required>
+    </div>
+    <div class="col-md-2 mb-2">
+      <label for="validationDefault03">City</label>
+      <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+    </div>
+    <div class="col-md-2 mb-2">
+      <label for="validationDefault04">County</label>
+      <input type="text" class="form-control" id="validationDefault04" placeholder="County" required>
+    </div>
+    <div class="col-md-2 mb-2">
+      <label for="validationDefault05">Eircode</label>
+      <input type="text" class="form-control" id="validationDefault05" placeholder="Eircode">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  </div>
+  <button class="btn btn-info text-white text"> <a href="https://buy.stripe.com/14k3d0em665LcJW144" target="_top" class="text-white text-decoration-none">Process Payment 
+  </a></button>
+ 
+</form>
+
+</div>
+

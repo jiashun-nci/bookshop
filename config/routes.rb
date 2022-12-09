@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # define cart path
+  get 'cart', to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
+  
   devise_for :users
   resources :reviews
   resources :books do

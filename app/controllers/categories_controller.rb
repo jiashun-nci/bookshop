@@ -1,5 +1,14 @@
+# category controller
+# 
+# define CRUD methods: show edit update destroy
+# 
+# @author jia    
+#
+
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+
+  # unauthenticared users are only allow to index and show the categories
   before_action :authenticate_user!, :except => [:index, :show]
 
   # GET /categories or /categories.json
