@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_001337) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_234259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,10 +36,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_001337) do
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orderables", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "cart_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_orderables_on_book_id"
+    t.index ["cart_id"], name: "index_orderables_on_cart_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -49,6 +64,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_001337) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "isbn"
+    t.string "title"
+    t.date "release_year"
+    t.string "author"
+    t.string "category"
+    t.decimal "min_price"
+    t.decimal "max_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,5 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_001337) do
 
   add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
+  add_foreign_key "orderables", "books"
+  add_foreign_key "orderables", "carts"
   add_foreign_key "reviews", "books"
 end

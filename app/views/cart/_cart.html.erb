@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "cart" do %>
+  <% if @cart.orderables.count > 0 %>
+    <%= render "cart/orderables" %>
+	<li class="list-group-item list-group-item-action list-group-item-info mt-0">
+    <p class="h5 text-right">Total: <%= @cart.total %></p>
+    <button class="btn btn-info btn-lg btn-block right" type="submit">
+        <%= link_to "Checkout", cart_path,  :class => 'text-white text-decoration-none' %>
+    </button>
+    </li>
+  <% else %>
+	<li class="list-group-item list-group-item-action list-group-item-info mt-0">
+    <p>Your cart is empty</p>
+    </li>
+  <% end %>
+<% end %>

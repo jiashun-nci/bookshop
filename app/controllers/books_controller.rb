@@ -1,10 +1,21 @@
+# book controller
+# 
+# define CRUD methods: show edit update destroy
+# 
+# @author jia    
+#
+
+# define BookController class
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+
+  # unauthenticared users are only allow to index and show the books
   before_action :authenticate_user!, :except => [:index, :show]
 
   # GET /books or /books.json
   def index
     # @books = Book.all
+    # database query with book title, select all books if no input
     @books = Book.where(["lower(title) LIKE ?","%#{params[:search.downcase]}%"])
   end
 

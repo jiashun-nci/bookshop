@@ -1,6 +1,13 @@
+# author controller
+# define CRUD methods: show edit update destroy
+# 
+# @author jia    
+# 
 class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, :only => [:index, :show]
+  
+  # unauthenticared users are only allow to index and show the authors
+  before_action :authenticate_user!, :except => [:index, :show] 
 
   # GET /authors or /authors.json
   def index

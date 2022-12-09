@@ -1,10 +1,12 @@
+
+
 <!-- Product section-->
-<div id="<%= dom_id book %>">
+<div id="<%= dom_id book %>"class="">
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src=<%= book.image_url %> alt=<%= book.title %> /></div>
-                    <div class="col-md-6">
+                    <div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" src=<%= book.image_url %> alt=<%= book.title %> /></div>
+                    <div class="col-md-4">
                         <div class="small mb-1">ISBN: <%= book.isbn %></div>
                         
                         <h1 class="display-5 fw-bolder"><%= book.title %></h1>
@@ -15,15 +17,19 @@
                         <div class="fs-2 fw-bold mb-5">
                             <span class="text-decoration-line-through">$<%= book.price %></span>
                         </div>
+                        <p class="lead">Description:</p>
                         <p class="lead"><%= book.desc %></p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-info ml-1" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
+                        <div class="form-inline">
+                           <%= form_with(url: cart_add_path) do |f| %>
+					      <%= f.hidden_field :id, value: book.id %>
+					      <%= f.number_field :quantity, value: 0, min: 1, class: "form-control text-center col-2" %>
+					      <%= f.submit "Add To Cart", {class:"btn btn-outline-info ml-1"} %>
+					   <% end %>
                         </div>
                     </div>
+                    	<div class="col-md-3 mt-0" style="min-height:600px">
+                    		<%= render partial: "cart/cart" if @render_cart %>
+                    	</div>
                 </div>
             </div>
         </section>

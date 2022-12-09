@@ -1,0 +1,28 @@
+<ul class="list-group">
+	<li class="list-group-item list-group-item-info"><h3>Cart</h3></li>
+
+<% @cart.orderables.each do |orderable| %>
+  <% book = orderable.book %>
+  <li class="list-group-item list-group-item-action list-group-item-light">
+  <div id="<%= "cart-#{book.id}" %>" class="" >
+    <p class="d-flex">
+      
+      <p class="mt-0 badge float-right">$<%= orderable.total %></p>
+      <p class="font-weight-bold"><%= book.title[0...12] %></p>
+      <%= form_with(url: cart_add_path) do |f| %>
+        <%= f.hidden_field :id, value: book.id %>
+        <%= f.number_field :quantity, value: orderable.quantity, min: 0, class: "form-control col-3 float-left mr-2" %>
+        <%= f.submit "Update", {class:"btn btn-info float-left"} %>
+      <% end %>
+      <span>
+      <%= form_with(url: cart_remove_path) do |f| %>
+        <%= f.hidden_field :id, value: orderable.id %>
+        <%= f.submit "X", {class:"btn btn-warning float-right"} %>
+      <% end %>
+	  </span>
+    </p>
+      
+  </div>
+  </li>
+<% end %>
+</ul>
