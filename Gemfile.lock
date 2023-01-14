@@ -112,6 +112,7 @@ GEM
     io-console (0.5.11)
     irb (1.5.1)
       reline (>= 0.3.0)
+    isisbn (0.1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   debug
   devise (~> 4.8, >= 4.8.1)
   importmap-rails
+  isisbn (~> 0.1.0)
   jbuilder
   pg (~> 1.4, >= 1.4.5)
   puma (~> 5.0)
